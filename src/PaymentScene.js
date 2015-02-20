@@ -81,23 +81,26 @@ var PaymentLayer = cc.Layer.extend({
 		switch (type){
 		case ccui.Widget.TOUCH_ENDED:
 			var sku = "00"+sender.tag;
-			//cc.loader.loadTxt(, function(err, txt){
+			if(!cc.sys.isNative){
 				var x=window.open("php/payment.php?sku="+sku+"&user="+USER,'','width=770, height=820,menubar=no, resizable=no,scrollbars=no,status=no,titlebarno,toolbar=no');
-//				x.document.open();
-//				x.document.write(txt);
-//				x.document.close();
-			//});	
+			}else{
+				//Aqui iria la solucion para plataformas nativas...
+			}
 			break;
 		}
 	},
 	loadItems: function(){
 		var self = this;
-		cc.loader.loadTxt("php/items.php?user="+USER, function(err, txt){
-			items = JSON.parse(txt);
-			self.labels[1].setString(" x " + items["001"]);
-			self.labels[2].setString(" x " + items["002"]);
-			self.labels[3].setString(" x " + items["003"]);
-		});	
+		if(!cc.sys.isNative){
+			cc.loader.loadTxt("php/items.php?user="+USER, function(err, txt){
+				items = JSON.parse(txt);
+				self.labels[1].setString(" x " + items["001"]);
+				self.labels[2].setString(" x " + items["002"]);
+				self.labels[3].setString(" x " + items["003"]);
+			});	
+		}else{
+			//Aqui iria la solucion para plataformas nativas...
+		}
 	}
 });
 
