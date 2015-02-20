@@ -1,0 +1,26 @@
+{
+    "project_type": "javascript",
+
+    "debugMode" : 1,
+    "showFPS" : false,
+    "frameRate" : 60,
+    "id" : "gameCanvas",
+    "renderMode" : 0,
+    "engineDir":"frameworks/cocos2d-html5",
+
+    "modules" : ["cocos2d", "pluginx", "plugin-facebook", "extensions"],
+    "plugin" : {
+        "facebook": {
+            "appId" : "612627585548884", 
+            "xfbml" : true,
+            "version" : "v2.0"
+        }
+    },
+
+    "jsList" : [
+        "src/resource.js",
+        "src/app.js",
+        "src/FacebookScene.js",
+        "src/PaymentScene.js"
+    ]
+}
